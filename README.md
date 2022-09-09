@@ -6,6 +6,7 @@ numpy and termcolor are required, along with having python 3.10 installed
 to install numpy and termcolor (if python is on path) use
 
 pip install numpy
+
 pip install termcolor
 
 thats it. just run it from command line using
