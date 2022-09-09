@@ -126,6 +126,30 @@ def redPiecesLogic():
   elif chessBoardState[locY, locX] == 6 and redPieceDict.get(chessBoardState[destY, destX], True) == True:
     kingLogic(locX, locY, destX, destY, 6)
 
+def cyanPiecesLogic():
+  locX = int(input('Please input the X coordinate of the piece you would like to move.'))
+  locY = int(input('Please input the Y coordinate of the piece you would like to move.'))
+  destX = int(input('Please input the X coordinate of the destination.'))
+  destY = int(input('Please input the Y coordinate of the destination.'))
+
+  if chessBoardState[locY, locX] == 7:
+    pawnLogic(locX, locY, destX, destY, 7)
+
+    #the cyanPieceDict check is to see whether the destination
+    #has a friendly piece on it
+    
+  elif chessBoardState[locY, locX] == 9 and cyanPieceDict.get(chessBoardState[destY, destX], True) == True:
+    knightLogic(locX, locY, destX, destY, 9)
+
+  elif chessBoardState[locY, locX] == 8 and cyanPieceDict.get(chessBoardState[destY, destX], True) == True:
+    rookLogic(locX, locY, destX, destY, 8)
+    
+  elif chessBoardState[locY, locX] == 10 and cyanPieceDict.get(chessBoardState[destY, destX], True) == True:
+    bishopLogic(locX, locY, destX, destY, 10)
+
+  elif chessBoardState[locY, locX] == 6 and cyanPieceDict.get(chessBoardState[destY, destX], True) == True:
+    kingLogic(locX, locY, destX, destY, 12)
+
 def pawnLogic(locX, locY, destX, destY, pieceNum):
   #move logic for red side pawn
   if pieceNum == 1:
@@ -142,24 +166,34 @@ def pawnLogic(locX, locY, destX, destY, pieceNum):
         chessBoardState[locY, locX] = 0
         chessBoardState[destY, destX] = 1
 
-def rookLogic(locX, locY, destX, destY, pieceNum):
-  if pieceNum == 2:
+  else:
+    if locY == 1 and destY == 3:
+      if locX - destX == 0 and chessBoardState[destY, destX] == 0:
+        chessBoardState[locY, locX] = 0
+        chessBoardState[destY, destX] = 7
 
+      elif destY - locY == 1 and locX - destX == 0:
+        if chessBoardState[destY, destX] == 0:
+          chessBoardState[locY, locX] = 0
+          chessBoardState[destY, destX] = 7
+    
+
+def rookLogic(locX, locY, destX, destY, pieceNum):
     #if the X coordinate doesnt change, i.e. moving up and down
     
-    if locX - destX == 0:
-      chessBoardState[locY, locX] == 0
-      chessBoardState[destY, destX] == 2
+  if locX - destX == 0:
+    chessBoardState[locY, locX] == 0
+    chessBoardState[destY, destX] == 2
     #if the Y coordinate doesnt change, i.e. moving left and right
       
-    elif locY - destY == 0:
-      chessBoardState[locY, locX] == 0
-      chessBoardState[destY, destX] == 2
-    else:
-      print('invalid move')
+  elif locY - destY == 0:
+    chessBoardState[locY, locX] == 0
+    chessBoardState[destY, destX] == 2
+  else:
+    print('invalid move')
 
 def knightLogic(locX, locY, destX, destY, pieceNum):
-    # up and right
+     # up and right
   if destX - locX == 1 and locY - destY == 2:
     chessBoardState[locY, locX] = 0
     chessBoardState[destY, destX] = pieceNum

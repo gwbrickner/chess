@@ -4,3 +4,5 @@ chessBoardStr = ""
 while True:
   printBoard()
   redPiecesLogic()
+  printBoard()
+  cyanPiecesLogic()
