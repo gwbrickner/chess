@@ -8,6 +8,3 @@ to install numpy and termcolor (if python is on path) use
 pip install numpy
 
 pip install termcolor
-
-thats it. just run it from command line using
-python3 /wherever/the/hell/you/have/it.py
